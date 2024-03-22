@@ -10,7 +10,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  #UI
   cupertino_icons: ^1.0.2
+  flutter_bloc: ^8.1.1
+
+  #Core
+  dio: ^5.4.1
+  get_it: ^7.6.7
+  dartz: ^0.10.1
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
