@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../app/modules/home/di/home_injection_container.dart';
+import '../../app/modules/weather/di/weather_injection_container.dart';
 import '../internet/internet.dart';
 
 class InjectionContainer {
-  final _instance = GetIt.instance;
+  static final _instance = GetIt.instance;
 
-  Future<void> initialize() async {
+  static Future<void> initialize() async {
     _instance.registerLazySingleton<Dio>(
       () => CustomDioClient.initialize(),
     );
@@ -17,6 +19,7 @@ class InjectionContainer {
       ),
     );
 
-    // SharedInjectionContainer().call(_instance);
+    WeatherInjectionContainer.call(_instance);
+    HomeInjectionContainer.call(_instance);
   }
 }

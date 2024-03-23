@@ -18,9 +18,6 @@ class App extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
       ),
-      supportedLocales: const [
-        Locale('pt'),
-      ],
       localeResolutionCallback: (deviceLocale, supportedLocales) {
         Locale? selectedLocale;
         if (deviceLocale != null) {
@@ -34,9 +31,6 @@ class App extends StatelessWidget {
         Intl.defaultLocale = selectedLocale.toString();
         return selectedLocale;
       },
-      // builder: (context, widget) {
-      //   return widget;
-      // },
     );
   }
 }

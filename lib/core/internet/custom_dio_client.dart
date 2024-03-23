@@ -1,4 +1,3 @@
-import 'package:cloudwalk_weather_test/core/constants/api/api_const.dart';
 import 'package:dio/dio.dart';
 
 import 'interceptor/custom_log_intercptor.dart';
@@ -12,7 +11,6 @@ class CustomDioClient {
       ..options.connectTimeout = const Duration(seconds: 25)
       ..options.receiveTimeout = const Duration(seconds: 25)
       ..options.contentType = Headers.jsonContentType
-      ..options.baseUrl = APIConst.weatherBaseUrl
       ..interceptors.addAll(
         [
           TokenRequestInterceptor(),

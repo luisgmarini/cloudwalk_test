@@ -1,5 +1,8 @@
+import 'package:cloudwalk_weather_test/app/modules/home/presenter/cubit/home_cubit.dart';
 import 'package:cloudwalk_weather_test/app/modules/home/presenter/home_screen.dart';
+import 'package:cloudwalk_weather_test/app/modules/weather/presenter/weather_details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 class AppGenerateRouter {
   static final navigatorKey = GlobalKey<NavigatorState>();
@@ -7,6 +10,7 @@ class AppGenerateRouter {
   AppGenerateRouter._();
 
   static const String routeHome = '/home';
+  static const String routeWeatherDetails = '/weather-details';
 
   static Route? onGenerateRoutes(RouteSettings settings) {
     final route = settings.name;
@@ -14,7 +18,12 @@ class AppGenerateRouter {
 
     switch (route) {
       case routeHome:
-        routePage = const HomeScreen();
+        routePage = HomeScreen(
+          homeCubit: GetIt.I.get<HomeCubit>(),
+        );
+        break;
+      case routeWeatherDetails:
+        routePage = WeatherDetailsScreen();
         break;
     }
 
