@@ -1,12 +1,13 @@
+import 'package:cloudwalk_weather_test/app/modules/home/presenter/components/home_search_field.dart';
 import 'package:cloudwalk_weather_test/app/modules/home/presenter/components/weather_card.dart';
 import 'package:cloudwalk_weather_test/app/modules/home/presenter/components/welcome_widget.dart';
 import 'package:cloudwalk_weather_test/app/modules/home/presenter/cubit/home_cubit.dart';
 import 'package:cloudwalk_weather_test/app/modules/home/presenter/cubit/home_state.dart';
-import 'package:cloudwalk_weather_test/app/modules/weather/domain/constants/main_cities_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/components/components.dart';
+import 'components/search_weather_error_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -25,7 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    widget.homeCubit.fetchCurrentWeather(MainCities.list[1]);
     _searchController = TextEditingController();
     super.initState();
   }
@@ -53,11 +53,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
               ),
               const SizedBox(height: 16),
-              AppTextField(
-                hintText: 'Search for a city',
-                enabled: true,
-                textEditingController: _searchController,
-                suffixIcon: const Icon(Icons.search),
+              HomeSearchField(
+                onSelected: (city) =>
+                    widget.homeCubit.fetchCurrentWeather(city),
               ),
               const SizedBox(height: 24),
               BlocBuilder<HomeCubit, HomeState>(
@@ -79,6 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         cityEntity: state.cityEntity,
                         onCardTap: () => {},
                       ),
+                    HomeError() => const SearchWeatherErrorWidget(),
                     _ => const SizedBox.shrink(),
                   };
                 },
