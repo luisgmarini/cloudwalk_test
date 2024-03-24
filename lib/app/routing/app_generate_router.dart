@@ -4,6 +4,8 @@ import 'package:cloudwalk_weather_test/app/modules/weather/presenter/weather_det
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
+import '../modules/weather/presenter/cubit/weather_details_cubit.dart';
+
 class AppGenerateRouter {
   static final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -23,7 +25,10 @@ class AppGenerateRouter {
         );
         break;
       case routeWeatherDetails:
-        routePage = WeatherDetailsScreen();
+        routePage = WeatherDetailsScreen(
+          cubit: GetIt.I.get<WeatherDetailsCubit>(),
+          args: settings.arguments as WeatherDetailsScreenArgs,
+        );
         break;
     }
 

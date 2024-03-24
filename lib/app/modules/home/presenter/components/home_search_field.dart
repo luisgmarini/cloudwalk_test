@@ -1,7 +1,7 @@
 import 'package:cloudwalk_weather_test/core/components/colors/custom_color.dart';
 import 'package:flutter/material.dart';
 
-import '../../../weather/domain/constants/main_cities_list.dart';
+import '../../../weather/domain/constants/main_cities.dart';
 import '../../../weather/domain/entity/city_entity.dart';
 
 class HomeSearchField extends StatelessWidget {

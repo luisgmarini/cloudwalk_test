@@ -33,7 +33,7 @@ class WeatherDatasourceImpl implements WeatherDatasource {
 
       return Right(
         DataSuccess(
-          data: result.data,
+          data: result.data ?? {},
         ),
       );
     } catch (e) {
@@ -49,14 +49,14 @@ class WeatherDatasourceImpl implements WeatherDatasource {
     try {
       final result = await _httpClient.doRequest<Map<String, dynamic>>(
         HttpRequest(
-          path: WeatherUrls.forecastNext5days,
+          path: WeatherUrls.forecastNext5days(lon: lon, lat: lat),
           method: 'GET',
         ),
       );
 
       return Right(
         DataSuccess(
-          data: result.data,
+          data: result.data ?? {},
         ),
       );
     } catch (e) {

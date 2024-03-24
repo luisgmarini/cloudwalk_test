@@ -1,18 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloudwalk_weather_test/app/modules/weather/domain/entity/city_entity.dart';
-import 'package:cloudwalk_weather_test/app/modules/weather/domain/entity/current_weather_entity.dart';
+import 'package:cloudwalk_weather_test/app/modules/weather/domain/entity/weather_entity.dart';
 import 'package:cloudwalk_weather_test/core/components/colors/custom_color.dart';
 import 'package:flutter/material.dart';
 
-class WeatherCard extends StatelessWidget {
-  const WeatherCard({
+class HomeWeatherCard extends StatelessWidget {
+  const HomeWeatherCard({
     super.key,
     required this.currentWeatherEntity,
     required this.cityEntity,
     required this.onCardTap,
   });
 
-  final CurrentWeatherEntity currentWeatherEntity;
+  final WeatherEntity currentWeatherEntity;
   final CityEntity cityEntity;
   final VoidCallback onCardTap;
 
@@ -32,14 +32,14 @@ class WeatherCard extends StatelessWidget {
           children: [
             _CardHeader(
               city: cityEntity.name,
-              description: currentWeatherEntity.weather.first.description,
+              description: currentWeatherEntity.weatherInfo.first.main,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 CachedNetworkImage(
                   height: 70,
-                  imageUrl: currentWeatherEntity.weather.first.icon,
+                  imageUrl: currentWeatherEntity.weatherInfo.first.icon,
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
                 Text(

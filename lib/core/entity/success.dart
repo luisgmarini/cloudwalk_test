@@ -18,10 +18,10 @@ class DataSuccess<T> extends AbsSuccess {
     required this.data,
   });
 
-  final T? data;
+  final T data;
 
   DataSuccess<T> copyWith(T? data) {
-    return DataSuccess(data: data ?? data);
+    return DataSuccess(data: data ?? this.data);
   }
 
   @override

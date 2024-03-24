@@ -15,7 +15,7 @@ class WelcomeWidget extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         Text(
-          'Welcome Band! Please search your next world trip city! 🤘',
+          'Welcome Band! Please search for your next world trip city! 🤘',
           style: Theme.of(context).textTheme.titleLarge,
           textAlign: TextAlign.center,
         ),

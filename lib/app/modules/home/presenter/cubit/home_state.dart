@@ -1,5 +1,5 @@
 import 'package:cloudwalk_weather_test/app/modules/weather/domain/entity/city_entity.dart';
-import 'package:cloudwalk_weather_test/app/modules/weather/domain/entity/current_weather_entity.dart';
+import 'package:cloudwalk_weather_test/app/modules/weather/domain/entity/weather_entity.dart';
 
 abstract class HomeState {}
 
@@ -17,6 +17,6 @@ class HomeLoaded extends HomeState {
     required this.cityEntity,
   });
 
-  final CurrentWeatherEntity currentWeatherEntity;
+  final WeatherEntity currentWeatherEntity;
   final CityEntity cityEntity;
 }

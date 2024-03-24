@@ -8,6 +8,6 @@ class WeatherUrls {
           {required double lat, required double lon}) =>
       '${APIConst.weatherBaseUrl}/data/2.5/weather?lat=$lat&lon=$lon&units=metric&appid=${Environment.instance?.apiKey}';
 
-  static String get forecastNext5days =>
-      '${APIConst.weatherBaseUrl}/data/2.5/forecast&appid=${Environment.instance?.apiKey}';
+  static String forecastNext5days({required double lat, required double lon}) =>
+      '${APIConst.weatherBaseUrl}/data/2.5/forecast?lat=$lat&lon=$lon&units=metric&appid=${Environment.instance?.apiKey}';
 }

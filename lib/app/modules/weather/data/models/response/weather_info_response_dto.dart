@@ -1,15 +1,15 @@
-import '../../../domain/entity/weather_entity.dart';
+import '../../../domain/entity/weather_info_entity.dart';
 
-class WeatherResponseDTO extends WeatherEntity {
-  const WeatherResponseDTO({
+class WeatherInfoResponseDTO extends WeatherInfoEntity {
+  const WeatherInfoResponseDTO({
     required super.id,
     required super.main,
     required super.description,
     required super.icon,
   });
 
-  factory WeatherResponseDTO.fromJson(Map<String, dynamic> json) {
-    return WeatherResponseDTO(
+  factory WeatherInfoResponseDTO.fromJson(Map<String, dynamic> json) {
+    return WeatherInfoResponseDTO(
       id: json['id'],
       main: json['main'],
       description: json['description'],

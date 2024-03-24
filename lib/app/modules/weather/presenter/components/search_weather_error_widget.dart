@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 
 class SearchWeatherErrorWidget extends StatelessWidget {
-  const SearchWeatherErrorWidget({super.key});
+  const SearchWeatherErrorWidget({
+    super.key,
+    required this.padding,
+  });
+
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Padding(
+      padding: padding,
       child: Column(
         children: [
-          SizedBox(height: MediaQuery.sizeOf(context).height * 0.2),
           const Icon(
             Icons.report_gmailerrorred,
             size: 90,

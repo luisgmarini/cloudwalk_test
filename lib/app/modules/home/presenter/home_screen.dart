@@ -1,13 +1,15 @@
 import 'package:cloudwalk_weather_test/app/modules/home/presenter/components/home_search_field.dart';
-import 'package:cloudwalk_weather_test/app/modules/home/presenter/components/weather_card.dart';
+import 'package:cloudwalk_weather_test/app/modules/home/presenter/components/home_weather_card.dart';
 import 'package:cloudwalk_weather_test/app/modules/home/presenter/components/welcome_widget.dart';
 import 'package:cloudwalk_weather_test/app/modules/home/presenter/cubit/home_cubit.dart';
 import 'package:cloudwalk_weather_test/app/modules/home/presenter/cubit/home_state.dart';
+import 'package:cloudwalk_weather_test/app/modules/weather/presenter/weather_details_screen.dart';
+import 'package:cloudwalk_weather_test/app/routing/app_generate_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/components/components.dart';
-import 'components/search_weather_error_widget.dart';
+import '../../weather/presenter/components/search_weather_error_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -22,18 +24,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late final TextEditingController _searchController;
-
-  @override
-  void initState() {
-    _searchController = TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
+  void _goToCityDetails({
+    required WeatherDetailsScreenArgs args,
+  }) {
+    Navigator.of(context).pushNamed(
+      AppGenerateRouter.routeWeatherDetails,
+      arguments: args,
+    );
   }
 
   @override
@@ -72,12 +69,21 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                    HomeLoaded() => WeatherCard(
+                    HomeLoaded() => HomeWeatherCard(
                         currentWeatherEntity: state.currentWeatherEntity,
                         cityEntity: state.cityEntity,
-                        onCardTap: () => {},
+                        onCardTap: () => _goToCityDetails(
+                          args: WeatherDetailsScreenArgs(
+                            currentWeather: state.currentWeatherEntity,
+                            city: state.cityEntity,
+                          ),
+                        ),
                       ),
-                    HomeError() => const SearchWeatherErrorWidget(),
+                    HomeError() => Center(
+                        child: SearchWeatherErrorWidget(
+                          padding: EdgeInsets.only(top: size.height * 0.2),
+                        ),
+                      ),
                     _ => const SizedBox.shrink(),
                   };
                 },
