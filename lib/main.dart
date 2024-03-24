@@ -10,7 +10,8 @@ Future<void> main() async {
   await InjectionContainer.initialize();
 
   Environment.initialize(
-      apiKey: 'a8be747b18e9d6325ff9c4cabed06b94'); // Add here Weather API key
+    apiKey: '', // Add here your Weather API key
+  );
 
   runApp(const App());
 }

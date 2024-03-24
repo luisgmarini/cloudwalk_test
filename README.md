@@ -1,16 +1,60 @@
-# cloudwalk_weather_test
+# CloudWalk Weather Test
 
-A new Flutter project.
+## Prerequisites
+
+- This project support `3.16.9` flutter version
+- [Flutter](https://docs.flutter.dev/get-started/install)
+
+### Weather retrieval
+
+You can create a [free account](https://home.openweathermap.org/users/sign_up) and get
+your [API key](https://home.openweathermap.org/api_keys).
+
+API documentation:
+
+- https://openweathermap.org/current
+- https://openweathermap.org/forecast
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1 - Clone project
 
-A few resources to get you started if this is your first Flutter project:
+```sh
+    git clone https://github.com/luisgmarini/cloudwalk_test.git
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2 - Get dependencies
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```sh
+    flutter pub get
+```
+
+3 - Add your Weather API key on `Environment.initialize` method, localized in `lib/main.dart`, You
+can create a [free account](https://home.openweathermap.org/users/sign_up) and get
+your [API key](https://home.openweathermap.org/api_keys).
+
+```sh
+  Environment.initialize(
+      apiKey: '', // Add here your Weather API key
+  ); 
+```
+
+4 - Run App
+
+```sh
+    flutter run
+```
+
+## Tools & Technologies
+
+- [Tuya SDK Plugin](https://git.paytvlabs.com.br/iot-br/tuya_sdk_plugin)
+- [Flutter Bloc](https://pub.dev/packages/flutter_bloc)
+- [Mocktail](https://pub.dev/packages/mocktail)
+- [Intl](https://pub.dev/packages/intl)
+- [Dio](https://pub.dev/packages/dio)
+- [Equatable](https://pub.dev/packages/equatable)
+
+## Preview
+
+![](./screen_shots/home.png) | ![](./screen_shots/weather.png)
+
