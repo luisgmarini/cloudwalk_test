@@ -1,15 +1,28 @@
 import 'package:cloudwalk_weather_test/app/modules/weather/domain/entity/city_entity.dart';
 import 'package:cloudwalk_weather_test/app/modules/weather/domain/entity/weather_entity.dart';
+import 'package:equatable/equatable.dart';
 
-abstract class HomeState {}
+abstract class HomeState extends Equatable {}
 
-class HomeInitial extends HomeState {}
+class HomeInitial extends HomeState {
+  @override
+  List<Object?> get props => [];
+}
 
-class HomeLoading extends HomeState {}
+class HomeLoading extends HomeState {
+  @override
+  List<Object?> get props => [];
+}
 
-class HomeEmpty extends HomeState {}
+class HomeEmpty extends HomeState {
+  @override
+  List<Object?> get props => [];
+}
 
-class HomeError extends HomeState {}
+class HomeError extends HomeState {
+  @override
+  List<Object?> get props => [];
+}
 
 class HomeLoaded extends HomeState {
   HomeLoaded({
@@ -19,4 +32,7 @@ class HomeLoaded extends HomeState {
 
   final WeatherEntity currentWeatherEntity;
   final CityEntity cityEntity;
+
+  @override
+  List<Object?> get props => [];
 }

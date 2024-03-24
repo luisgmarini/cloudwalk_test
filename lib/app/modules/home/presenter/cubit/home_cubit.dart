@@ -15,11 +15,7 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> fetchCurrentWeather(CityEntity cityEntity) async {
     emit(HomeLoading());
 
-    final params = FetchCurrentWeatherUsecaseParams(
-      cityEntity: cityEntity,
-    );
-
-    final result = await _fetchCurrentWeatherUsecase(params);
+    final result = await _fetchCurrentWeatherUsecase(cityEntity);
 
     return result.fold(
       (l) => emit(HomeError()),

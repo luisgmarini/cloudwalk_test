@@ -17,11 +17,7 @@ class WeatherDetailsCubit extends Cubit<WeatherDetailsState> {
   ) async {
     emit(WeatherDetailsLoading());
 
-    final params = ForecastNext5DaysUsecaseParams(
-      cityEntity: cityEntity,
-    );
-
-    final result = await _forecastNext5DaysUsecase(params);
+    final result = await _forecastNext5DaysUsecase(cityEntity);
 
     return result.fold(
       (l) => emit(WeatherDetailsError()),

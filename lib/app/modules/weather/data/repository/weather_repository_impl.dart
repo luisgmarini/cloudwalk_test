@@ -1,12 +1,11 @@
 import 'package:cloudwalk_weather_test/app/modules/weather/data/datasource/weather_datasource.dart';
 import 'package:cloudwalk_weather_test/app/modules/weather/data/models/response/fetch_current_weather_response_dto.dart';
 import 'package:cloudwalk_weather_test/app/modules/weather/domain/entity/weather_entity.dart';
-import 'package:cloudwalk_weather_test/app/modules/weather/domain/usecases/forecast_next_5days_usecase.dart';
 import 'package:cloudwalk_weather_test/core/entity/failures.dart';
 import 'package:dartz/dartz.dart';
 
+import '../../domain/entity/city_entity.dart';
 import '../../domain/repository/weather_respository.dart';
-import '../../domain/usecases/fetch_current_weather_usecase.dart';
 
 class WeatherRepositoryImpl implements WeatherRepository {
   WeatherRepositoryImpl({
@@ -17,12 +16,12 @@ class WeatherRepositoryImpl implements WeatherRepository {
 
   @override
   Future<Either<Failure, WeatherEntity>> fetchCurrentWeather(
-    FetchCurrentWeatherUsecaseParams params,
+    CityEntity city,
   ) async {
     try {
       final result = await _dataSource.fetchCurrentWeather(
-        lat: params.cityEntity.lat,
-        lon: params.cityEntity.lon,
+        lat: city.lat,
+        lon: city.lon,
       );
 
       return result.flatMap(
@@ -39,12 +38,12 @@ class WeatherRepositoryImpl implements WeatherRepository {
 
   @override
   Future<Either<Failure, List<WeatherEntity>>> forecastNext5Days(
-    ForecastNext5DaysUsecaseParams params,
+    CityEntity city,
   ) async {
     try {
       final result = await _dataSource.forecastNext5days(
-        lat: params.cityEntity.lat,
-        lon: params.cityEntity.lon,
+        lat: city.lat,
+        lon: city.lon,
       );
 
       return result.flatMap(

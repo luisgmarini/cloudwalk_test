@@ -5,23 +5,23 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../../core/entity/failures.dart';
 
-class FetchCurrentWeatherUsecase {
-  FetchCurrentWeatherUsecase({
+abstract class FetchCurrentWeatherUsecase {
+  Future<Either<Failure, WeatherEntity>> call(
+    CityEntity city,
+  );
+}
+
+class FetchCurrentWeatherUsecaseImpl implements FetchCurrentWeatherUsecase {
+  FetchCurrentWeatherUsecaseImpl({
     required WeatherRepository repository,
   }) : _repository = repository;
 
   final WeatherRepository _repository;
 
+  @override
   Future<Either<Failure, WeatherEntity>> call(
-      FetchCurrentWeatherUsecaseParams params) async {
-    return _repository.fetchCurrentWeather(params);
+    CityEntity city,
+  ) async {
+    return await _repository.fetchCurrentWeather(city);
   }
-}
-
-class FetchCurrentWeatherUsecaseParams {
-  const FetchCurrentWeatherUsecaseParams({
-    required this.cityEntity,
-  });
-
-  final CityEntity cityEntity;
 }

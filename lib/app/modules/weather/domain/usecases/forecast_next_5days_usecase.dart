@@ -5,23 +5,21 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../../core/entity/failures.dart';
 
-class ForecastNext5DaysUsecase {
-  ForecastNext5DaysUsecase({
+abstract class ForecastNext5DaysUsecase {
+  Future<Either<Failure, List<WeatherEntity>>> call(
+    CityEntity city,
+  );
+}
+
+class ForecastNext5DaysUsecaseImpl implements ForecastNext5DaysUsecase {
+  ForecastNext5DaysUsecaseImpl({
     required WeatherRepository repository,
   }) : _repository = repository;
 
   final WeatherRepository _repository;
 
-  Future<Either<Failure, List<WeatherEntity>>> call(
-      ForecastNext5DaysUsecaseParams params) async {
-    return _repository.forecastNext5Days(params);
+  @override
+  Future<Either<Failure, List<WeatherEntity>>> call(CityEntity city) async {
+    return _repository.forecastNext5Days(city);
   }
-}
-
-class ForecastNext5DaysUsecaseParams {
-  const ForecastNext5DaysUsecaseParams({
-    required this.cityEntity,
-  });
-
-  final CityEntity cityEntity;
 }

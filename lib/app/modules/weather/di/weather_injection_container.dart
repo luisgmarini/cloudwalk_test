@@ -26,13 +26,13 @@ class WeatherInjectionContainer {
     );
 
     instance.registerLazySingleton<FetchCurrentWeatherUsecase>(
-      () => FetchCurrentWeatherUsecase(
+      () => FetchCurrentWeatherUsecaseImpl(
         repository: instance.get<WeatherRepository>(),
       ),
     );
 
     instance.registerLazySingleton<ForecastNext5DaysUsecase>(
-      () => ForecastNext5DaysUsecase(
+      () => ForecastNext5DaysUsecaseImpl(
         repository: instance.get<WeatherRepository>(),
       ),
     );
