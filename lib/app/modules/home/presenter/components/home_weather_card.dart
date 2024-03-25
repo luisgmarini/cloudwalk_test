@@ -69,20 +69,21 @@ class _CardHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              city,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            Text(
-              description,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-          ],
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                city,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              Text(
+                description,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+            ],
+          ),
         ),
         const Icon(
           Icons.arrow_forward_ios,

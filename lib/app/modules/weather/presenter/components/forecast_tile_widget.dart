@@ -16,22 +16,23 @@ class ForecastTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              StringUtils.dateForecastFormat(
-                forecast.date ?? '',
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                StringUtils.dateForecastFormat(
+                  forecast.date ?? '',
+                ),
+                style: Theme.of(context).textTheme.titleMedium,
               ),
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            Text(
-              forecast.weatherInfo.first.description,
-            ),
-          ],
+              Text(
+                forecast.weatherInfo.first.description,
+              ),
+            ],
+          ),
         ),
         const SizedBox(width: 16),
-        const Spacer(),
         Column(
           children: [
             Row(
