@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="cloudwalk_weather_test"
+        android:label="CloudWalk Weather Test"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
